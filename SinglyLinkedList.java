@@ -148,9 +148,19 @@ public class SinglyLinkedList implements LinkedList{
     
     @Override
     public void printReverse() {
-        // TODO digunakan untuk mencetak data pada linked list dengan urutan terbalik, dari tail ke head.
-        
+        printReverseHelper(head);
     }
+
+    // ini method ditambahin soalnya sll g bisa make prev
+    private void printReverseHelper(Node current) {
+        if (current == null) {
+            return;
+        }
+    
+        printReverseHelper(current.next);
+        System.out.println(current.data);
+    }
+    
     @Override
     public boolean remove(Object targetData) {
         if (head == null) {
