@@ -122,13 +122,13 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public Object get(int index) {
-        if (i < 0 || i >= size) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
     
-        Node current = head;
+        Node2P current = head;
     
-        for (int j = 0; j < i; j++) {
+        for (int j = 0; j < index; j++) {
             current = current.next;
         }
     
@@ -137,7 +137,7 @@ public class DoublyLinkedList implements LinkedList{
     
     @Override
     public int indexOf(Object targetData) {
-        Node current = head;
+        Node2P current = head;
         int index = 0;
     
         while (current != null) {
@@ -154,7 +154,7 @@ public class DoublyLinkedList implements LinkedList{
     
     @Override
     public void printReverse() {
-        Node current = tail;
+        Node2P current = tail;
     
         while (current != null) {
             System.out.println(current.data);
@@ -164,10 +164,10 @@ public class DoublyLinkedList implements LinkedList{
     
     @Override
     public boolean remove(Object targetData) {
-        Node current = head;
+        Node2P current = head;
         
         while (current != null &&
-               !current.data == targetData) {
+               !current.data.equals(targetData)) {
             current = current.next;
         }
         
@@ -187,7 +187,7 @@ public class DoublyLinkedList implements LinkedList{
     @Override
     public Object[] toArray() {
         Object[] array = new Object[size];
-        Node current = head;
+        Node2P current = head;
     
         int i = 0;
         while (current != null) {

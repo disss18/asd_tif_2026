@@ -116,14 +116,14 @@ public class SinglyLinkedList implements LinkedList{
     }
     @Override
     public Object get(int index) {
-        if (i < 0 || i >= size) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
     
         Node current = head;
     
-        for (int j = 0; j < i; j++) {
-            current = current.next;
+        for (int j = 0; j < index; j++) {
+            current = current.pointer;
         }
     
         return current.data;
@@ -139,7 +139,7 @@ public class SinglyLinkedList implements LinkedList{
                 return index;
             }
     
-            current = current.next;
+            current = current.pointer;
             index++;
         }
     
@@ -151,13 +151,12 @@ public class SinglyLinkedList implements LinkedList{
         printReverseHelper(head);
     }
 
-    // ini method ditambahin soalnya sll g bisa make prev
     private void printReverseHelper(Node current) {
         if (current == null) {
             return;
         }
     
-        printReverseHelper(current.next);
+        printReverseHelper(current.pointer);
         System.out.println(current.data);
     }
     
@@ -168,7 +167,7 @@ public class SinglyLinkedList implements LinkedList{
         }
         
         if (head.data == targetData) {
-            head = head.next;
+            head = head.pointer;
             size--;
             if (head == null) tail = null;
             return true;
@@ -176,16 +175,16 @@ public class SinglyLinkedList implements LinkedList{
     
         Node current = head;
         
-        while (current.next != null &&
-               !current.next.data == targetData) {
-            current = current.next;
+        while (current.pointer != null &&
+               !current.pointer.data.equals(targetData)) {
+            current = current.pointer;
         }
     
-        if (current.next == null) return false;
+        if (current.pointer == null) return false;
         
-        if (current.next == tail) tail = current;
+        if (current.pointer == tail) tail = current;
     
-        current.next = current.next.next;
+        current.pointer = current.pointer.pointer;
         size--;
     
         return true;
@@ -200,7 +199,7 @@ public class SinglyLinkedList implements LinkedList{
         int i = 0;
         while (current != null) {
             array[i] = current.data;
-            current = current.next;
+            current = current.pointer;
             i++;
         }
     
