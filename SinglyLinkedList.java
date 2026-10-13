@@ -156,9 +156,19 @@ public class SinglyLinkedList implements LinkedList{
         // TODO digunakan untuk mencari dan menghapus node dengan data=targetData pada linked list serta mengembalikan nilai True jika berhasil, dan False jika targetData tidak ada di linkedList
         return false;
     }
+    
     @Override
     public Object[] toArray() {
-        // TODO digunakan untuk mendapatkan keseluruhan data pada node-node di linked list dalam bentuk array. Data-data pada array disusun secara urut mulai dari head sampai dengan tail.
-        return null;
+        Object[] array = new Object[size];
+        Node current = head;
+    
+        int i = 0;
+        while (current != null) {
+            array[i] = current.data;
+            current = current.next;
+            i++;
+        }
+    
+        return array;
     }
 }
